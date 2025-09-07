@@ -11,13 +11,16 @@ corespunzătoare către server. Putem iesi din acest ciclu cu ajutorul comenzii 
 De asemenea, am mai introdus niste functii auxiliare inaintea functiei main, care servesc la urmatoarele scopuri:
 
 *create_json_object_book*
+
 Această funcție primește detalii despre o carte (titlu, autor, număr de pagini, gen, editor) și creează un obiect JSON care conține aceste informații. Obiectul JSON rezultat este serializat într-un 
 șir de caractere și returnat.
 
 *extract_payload*
+
 Această funcție primește un răspuns de la serverul API și extrage conținutul util (payload-ul) din răspuns. Funcția caută șirul "timeout" în răspuns pentru a identifica începutul conținutului util.Apoi, folosește funcția strtok pentru a extrage linii individuale din conținutul util și returnează rezultatul.
 
 *verify_number_without_last și verify_number*
+
 Aceste funcții verifică dacă un șir de caractere reprezintă un număr. verify_number_without_last verifică toate caracterele din șir, cu excepția ultimului caracter, în timp ce verify_number verifică toate caracterele din șir. Aceste funcții utilizează funcția isdigit din biblioteca ctype.h pentru a verifica dacă fiecare caracter este un cifră. Rezultatul este returnat sub formă de valoare booleană (1 pentru adevărat și 0 pentru fals).
 
 Funcționalitatea principală a codului este implementată în funcția getRequestType care determină tipul comenzii primite de la utilizator și funcțiile asociate fiecărui tip de comandă. Tipurile de comenzi suportate sunt: REGISTER, LOGIN, ENTER_LIBRARY, GET_BOOKS, GET_BOOK, ADD_BOOK, DELETE_BOOK, LOGOUT, EXIT.Fiecare comandă are o secțiune în cod care primește argumentele necesare de la utilizator și apoi construiește cererea HTTP corespunzătoare folosind funcțiile din biblioteca helpers.h și requests.h.
